@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CarBook.Persistence.Repositories.BlogRepositories
 {
-    public class BlogRepository : IBlogRepository
+	public class BlogRepository : IBlogRepository
     {
         private readonly CarBookContext _context;
 
@@ -19,7 +19,17 @@ namespace CarBook.Persistence.Repositories.BlogRepositories
             _context = context;
         }
 
-        public List<Blog> GetLast3BlogsWithAuthors()
+		public List<Blog> GetAllBlogsWithAuthors()
+		{
+			var values = _context.Blogs
+				.OrderByDescending(x => x.BlogId)
+				.Include(x => x.Author)
+				.Include(x => x.Category)
+				.ToList();
+			return values;
+		}
+
+		public List<Blog> GetLast3BlogsWithAuthors()
         {
             var values = _context.Blogs
                 .OrderByDescending(x=>x.BlogId)

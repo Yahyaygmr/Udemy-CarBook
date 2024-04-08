@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Folder Include="Features\Mediator\Handlers\CarPricingHandlers\Write\" />
+    <Folder Include="Features\Repository\CommentRepositories\" />
   </ItemGroup>
 
 </Project>

@@ -46,5 +46,11 @@ namespace CarBook.WebApi.Controllers
             await _mediator.Send(new RemoveAuthorCommand(id));
             return Ok("Yazar başarıyla silindi.");
         }
+        [HttpGet("GetAuthorByBlogId")]
+        public async Task<IActionResult> GetAuthorByBlogId(int id)
+        {
+            var value = await _mediator.Send(new GetAuthorByBlogIdQuery(id));
+            return Ok(value);
+        }
     }
 }

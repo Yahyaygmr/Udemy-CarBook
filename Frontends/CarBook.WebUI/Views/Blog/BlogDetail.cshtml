@@ -9,11 +9,11 @@
         <div class="row">
             <div class="col-md-8 ftco-animate">
                 @await Component.InvokeAsync("_BlogDetailMainComponent", new { id = ViewBag.blogId })
-                @await Component.InvokeAsync("_BlogDetailAuthorComponent")
+                @await Component.InvokeAsync("_BlogDetailAuthorComponent", new { id = ViewBag.blogId })
                 <div class="pt-5 mt-5">
-                    @await Component.InvokeAsync("_BlogDetailCommentsComponent")
+                    @await Component.InvokeAsync("_BlogDetailCommentsComponent", new { id = ViewBag.blogId })
                     <!-- END comment-list -->
-                    @await Component.InvokeAsync("_BlogDetailLeaveACommentComponent")
+                    @await Component.InvokeAsync("_BlogDetailLeaveACommentComponent", new { id = ViewBag.blogId })
                 </div>
 
             </div> <!-- .col-md-8 -->

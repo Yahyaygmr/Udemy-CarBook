@@ -1,0 +1,12 @@
+﻿@model GetBlogByIdDto
+<h2 class="mb-3">@Model.Name</h2>
+<p>@Model.Description</p>
+<p>
+    <img src="@Model.CoverImageUrl" alt="" class="img-fluid">
+</p>
+    <img src="/carbook-master/images/image_4.jpg" alt="" class="img-fluid">
+</p>
+
+
+@*Tag Cloud By Blog*@
+@* @await Component.InvokeAsync("_BlogDetailTagCloudByBlogComponent") *@

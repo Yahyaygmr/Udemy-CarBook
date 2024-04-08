@@ -16,6 +16,7 @@ using CarBook.Application.Interfaces.AuthorInterfaces;
 using CarBook.Application.Interfaces.BlogInterfaces;
 using CarBook.Application.Interfaces.CarInterfaces;
 using CarBook.Application.Interfaces.CarPricingInterfaces;
+using CarBook.Application.Interfaces.CommentRepositories;
 using CarBook.Application.Interfaces.TagCloudInterfaces;
 using CarBook.Application.Services;
 using CarBook.Domain.Entities;
@@ -40,9 +41,10 @@ builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
 builder.Services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
 builder.Services.AddScoped(typeof(ITagCloudRepository), typeof(TagCloudRepository));
 builder.Services.AddScoped(typeof(IAuthorRepository), typeof(AuthorRepository));
+builder.Services.AddScoped(typeof(ICommentRepository), typeof(CommentRepository));
 
 //Repository Pattern
-builder.Services.AddScoped<IGenericRepository<Comment>, CommentRepository>();
+//builder.Services.AddScoped<IGenericRepository<Comment>, CommentRepository>();
 //builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(CommentRepository));
 
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();

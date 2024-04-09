@@ -1,0 +1,73 @@
+﻿@model UpdateCarDto
+@{
+    ViewData["Title"] = "Araç Güncelleme Formu";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="card-title">Araç Güncelleme Formu</h4>
+            <p class="card-subtitle mb-4">Kayıtlı araçlarınızı bu form üzerinden güncelleyebilirsiniz.</p><p> Araçla ilgili temel verileri girmeniz zorunludur.</p><p> Veri girişi yaptıktan sonra "Güncelle" butonuna tıklayarak araç güncelleme işlemini tamamlayabilirsiniz.</p>
+            <form method="post">
+                <input type="hidden" asp-for="CarId"/>
+                <div class="form-group">
+                    <label>Marka</label>
+                    <select asp-for="BrandId" class="form-control" asp-items="ViewBag.brands">
+                        <option value="">Marka Seçiniz...</option>
+                    </select>
+                    <span asp-validation-for="BrandId"></span>
+                </div>
+                <div class="form-group">
+                    <label>Model</label>
+                    <input type="text" asp-for="Model" class="form-control" placeholder="Model Giriniz..." />
+                    <span asp-validation-for="Model"></span>
+                </div>
+                <div class="form-group">
+                    <label>Km</label>
+                    <input type="text" asp-for="Km" class="form-control" placeholder="Kilometre Giriniz..." />
+                    <span asp-validation-for="Km"></span>
+                </div>
+                <div class="form-group">
+                    <label>Vites</label>
+                    <input type="text" asp-for="Transmission" class="form-control" placeholder="Vites Türü Giriniz..." />
+                    <span asp-validation-for="Transmission"></span>
+                </div>
+                <div class="form-group">
+                    <label>Koltuk</label>
+                    <input type="number" asp-for="Seat" class="form-control" placeholder="Koltuk Sayısı Giriniz..." />
+                    <span asp-validation-for="Seat"></span>
+                </div>
+                <div class="form-group">
+                    <label>Bagaj</label>
+                    <input type="number" asp-for="Luggage" class="form-control" placeholder="Bagaj Adedi Giriniz..." />
+                    <span asp-validation-for="Luggage"></span>
+                </div>
+                <div class="form-group">
+                    <label>Yakıt Türü</label>
+                    <input type="text" asp-for="Fuel" class="form-control" placeholder="Yakıt Türü Giriniz..." />
+                    <span asp-validation-for="Fuel"></span>
+                </div>
+                <div class="form-group">
+                    <label>Kapak Fotoğrafı</label>
+                    <input type="text" asp-for="CoverImageUrl" class="form-control" placeholder="Kapak Fotoğrafı Giriniz..." />
+                    <span asp-validation-for="CoverImageUrl"></span>
+                </div>
+                <div class="form-group">
+                    <label>Büyük Kapak Fotoğrafı (Detay sayfasında kullanılacak.)</label>
+                    <input type="text" asp-for="BigImageUrl" class="form-control" placeholder="Big Img Giriniz..." />
+                    <span asp-validation-for="BigImageUrl"></span>
+                </div>
+                @*   <div class="form-group mb-3">
+                <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="checkmeout0">
+                <label class="custom-control-label" for="checkmeout0">Check me out !</label>
+                </div>
+                </div> *@
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Güncelle</button>
+            </form>
+
+        </div> <!-- end col -->
+    </div>
+</div>
+

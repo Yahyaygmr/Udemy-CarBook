@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Layout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @await Component.InvokeAsync("AdminLayoutHeadComponent")
+</head>
+
+<body>
+    <div id="layout-wrapper">
+        @await Component.InvokeAsync("AdminLayoutHeaderComponent")
+        <div class="vertical-menu">
+            @await Component.InvokeAsync("AdminLayoutSideBarComponent")
+
+        </div>
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+
+                                <div class="container">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                @RenderBody()
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                </div> <!-- container-fluid -->
+            </div>
+
+
+            @await Component.InvokeAsync("AdminLayoutFooterComponent")
+        </div>
+    </div>
+    @await Component.InvokeAsync("AdminLayoutScriptsComponent")
+</body>
+
+</html>

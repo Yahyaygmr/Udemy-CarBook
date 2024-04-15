@@ -1,0 +1,41 @@
+﻿@model List<ResultCategoryDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="col-xl-12">
+    <h4 class="card-title">Blog Kategorileri Listesi</h4>
+    <p class="card-subtitle mb-4">
+        Blog Kategorileri ile ilgili ekleme, güncelleme, silme ve listeleme işlemlerini bu sayfa üzerinden gerçekleştirebilirsiniz.
+    </p>
+    <div class="table-responsive table-hover">
+        <table class="table mb-0">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Kategori</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CategoryId</td>
+                        <td>@item.Name</td>
+                        <td>
+                            <a href="/Admin/Category/RemoveCategory/@item.CategoryId" class="btn btn-outline-danger">Sil</a>
+                            <a href="/Admin/Category/UpdateCategory/@item.CategoryId" class="btn btn-outline-success">Güncelle</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class=" mt-4">
+            <a href="/Admin/Category/CreateCategory/" class="btn btn-outline-primary ">+ Yeni Kategori Ekle</a>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,25 @@
+﻿@model CreateFeatureDto
+@{
+    ViewData["Title"] = "CreateFeature";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="card-title">Araç Özellik Oluşturma Formu</h4>
+            <p class="card-subtitle mb-4">Araçlara ait yeni özellikler oluşturmak için bu formu kullanabilirsiniz.</p><p> Veri girişi yaptıktan sonra "Kaydet" butonuna tıklayarak yeni özellik kaydı işlemini tamamlayabilirsiniz.</p>
+            <form method="post">
+                
+                <div class="form-group">
+                    <label>Özellik</label>
+                    <input type="text" asp-for="Name" class="form-control" placeholder="Yeni Özellik Giriniz..." />
+                    <span asp-validation-for="Name"></span>
+                </div>
+               
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Kaydet</button>
+            </form>
+
+        </div> <!-- end col -->
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model UpdateBannerDto
+@{
+    ViewData["Title"] = "UpdateBanner";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="card-title">Anasayfa Banner Alanı Düzenleme Formu</h4>
+            <p class="card-subtitle mb-4">Anasayfa da bulunan banner alanındaki bilgileri güncellemek için bu formu kullanabilirsiniz. Bilgileri girdikten sonra "Güncelle" butonauna tıklayarak değişklikleri kaydedebilirsiniz.</p>
+            <form method="post">
+                <input type="hidden" asp-for="BannerId" />
+                <div class="form-group">
+                    <label>Başlık</label>
+                    <input type="text" asp-for="Title" class="form-control"/>
+                    <span asp-validation-for="Title"></span>
+                </div>
+                <div class="form-group">
+                    <label>Açıklama</label>
+                    <input type="text" asp-for="Description" class="form-control"/>
+                    <span asp-validation-for="Description"></span>
+                </div> 
+                <div class="form-group">
+                    <label>Video Url</label>
+                    <input type="text" asp-for="VideoUrl" class="form-control"/>
+                    <span asp-validation-for="VideoUrl"></span>
+                </div> 
+                <div class="form-group">
+                    <label>Video Açıklama</label>
+                    <input type="text" asp-for="VideoDescription" class="form-control"/>
+                    <span asp-validation-for="VideoDescription"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Güncelle</button>
+            </form>
+
+        </div> <!-- end col -->
+    </div>
+</div>
+

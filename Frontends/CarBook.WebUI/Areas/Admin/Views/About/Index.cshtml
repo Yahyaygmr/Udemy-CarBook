@@ -1,0 +1,44 @@
+﻿@model List<ResultAboutDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="col-xl-12">
+    <h4 class="card-title">Site Hakkımızda Alanı</h4>
+    <p class="card-subtitle mb-4">
+       Site hakkımızda alanı ile ilgili güncelleme-düzenleme işlemlerini yapabilirsiz.
+    </p>
+    <div class="table-responsive table-hover">
+        <table class="table mb-0">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Başlık</th>
+                    <th>Açıklama</th>
+                    <th>Resim Url</th>
+                    <th>Güncelle</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.aboutId</td>
+                        <td>@item.title</td>
+                        <td>@item.description</td>
+                        <td><img src="@item.imageUrl" style="max-width:80px;"/></td>
+                        <td><a href="/Admin/About/UpdateAbout/@item.aboutId" class="btn btn-outline-info">Güncelle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class=" mt-4">
+            @*             <a href="/AdminBrand/CreateBrand/" class="btn btn-outline-primary ">+ Yeni About Ekle</a> *@
+        </div>
+    </div>
+
+</div>
+

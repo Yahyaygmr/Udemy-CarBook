@@ -1,0 +1,44 @@
+﻿@model List<GetCommentByBlogIdDto>
+@{
+    ViewData["Title"] = "GetCommentsByBlogId";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="col-xl-12">
+    <h4 class="card-title">Bloga Yapılmış Yorumlar</h4>
+    <p class="card-subtitle mb-4">
+        Seçilem bloğa yapılmış olan yorumlar burada listelenmektedir.
+    </p>
+    <div class="table-responsive table-hover">
+        <table class="table mb-0">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Blog Id</th>
+                    <th>Adı Soyadı</th>
+                    <th>Tarih</th>
+                    <th>Yorum</th>
+                    <th>Sil</th>
+                    <th>Blogu Aç</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CommentId</td>
+                        <td>@item.BlogId</td>
+                        <td>@item.Name</td>
+                        <td>@item.CreatedDate</td>
+                        <td>@item.Description</td>
+                        <td> <a href="/Admin/Comment/RemoveComment/@item.CommentId" class="btn btn-outline-danger">Yorumu Sil</a></td>
+                        <td> <a href="/Blog/BlogDetail/@item.BlogId" class="btn btn-outline-success" target="_blank">Sitede Gör</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+

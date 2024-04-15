@@ -42,7 +42,7 @@ namespace CarBook.WebApi.Controllers
             await _mediator.Send(command);
             return Ok("Yorum başarıyla güncellendi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveComment(int id)
         {
             await _mediator.Send(new RemoveCommentCommand(id));

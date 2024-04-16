@@ -1,0 +1,45 @@
+﻿@model List<ResultTestimonialDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="col-xl-12">
+    <h4 class="card-title">Referanslar Listesi</h4>
+    <p class="card-subtitle mb-4">
+        Referanslar ile ilgili ekleme, güncelleme, silme ve listeleme işlemlerini bu sayfa üzerinden gerçekleştirebilirsiniz.
+    </p>
+    <div class="table-responsive table-hover">
+        <table class="table mb-0">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Resim</th>
+                    <th>Ünvan</th>
+                    <th>Ad Soyad</th>
+                    <th>Yorum</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.testimonialId</td>
+                        <td><img src="@item.imageUrl" style="max-width:50px;"/></td>
+                        <td>@item.title</td>
+                        <td>@item.name</td>
+                        <td>@item.comment</td>
+                        <td> <a href="/Admin/Testimonial/RemoveTestimonial/@item.testimonialId" class="btn btn-outline-danger">Sil</a></td>
+                        <td> <a href="/Admin/Testimonial/UpdateTestimonial/@item.testimonialId" class="btn btn-outline-success">Güncelle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class=" mt-4">
+            <a href="/Admin/Testimonial/CreateTestimonial/" class="btn btn-outline-primary ">+ Yeni Referans Ekle</a>
+        </div>
+    </div>
+
+</div>

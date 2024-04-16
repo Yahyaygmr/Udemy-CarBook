@@ -1,0 +1,40 @@
+﻿@model List<ResultLocationDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="col-xl-12">
+    <h4 class="card-title">Lokasyon Listesi</h4>
+    <p class="card-subtitle mb-4">
+        Anasayfada bulunan rezervasyon alanındaki lokasyon bilgisi bölümü ile ilgili ekleme, güncelleme, silme ve listeleme işlemlerini bu sayfa üzerinden gerçekleştirebilirsiniz.
+    </p>
+    <div class="table-responsive table-hover">
+        <table class="table mb-0">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Lokasyon Adı</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.LocationId</td>
+                        <td>@item.Name</td>
+                        <td> <a href="/Admin/Location/RemoveLocation/@item.LocationId" class="btn btn-outline-danger">Sil</a></td>
+                        <td> <a href="/Admin/Location/UpdateLocation/@item.LocationId" class="btn btn-outline-success">Güncelle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class=" mt-4">
+            <a href="/Admin/Location/CreateLocation/" class="btn btn-outline-primary ">+ Yeni Lokasyon Ekle</a>
+        </div>
+    </div>
+
+</div>
+

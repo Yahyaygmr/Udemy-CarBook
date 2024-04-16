@@ -40,7 +40,7 @@ namespace CarBook.WebApi.Controllers
             await _mediator.Send(command);
             return Ok("Ödeme periyodu başarıyla güncellendi.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemovePricing(int id)
         {
             await _mediator.Send(new RemovePricingCommand(id));

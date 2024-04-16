@@ -1,0 +1,43 @@
+﻿@model List<ResultPricingDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="col-xl-12">
+    <h4 class="card-title">Ödeme Periyodu Listesi</h4>
+    <p class="card-subtitle mb-4">
+        Ödeme periyotları ile ilgili ekleme, güncelleme, silme ve listeleme işlemlerini bu sayfa üzerinden gerçekleştirebilirsiniz.
+    </p>
+    <div class="table-responsive table-hover">
+        <table class="table mb-0">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Periyot Adı</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.PricingId</td>
+                        <td>@item.Name</td>
+                        <td>
+                            <a href="/Admin/Pricing/RemovePricing/@item.PricingId" class="btn btn-outline-danger">Sil</a>
+                        </td>
+                        <td><a href="/Admin/Pricing/UpdatePricing/@item.PricingId" class="btn btn-outline-success">Güncelle</a></td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class=" mt-4">
+            <a href="/Admin/Pricing/CreatePricing/" class="btn btn-outline-primary ">+ Yeni Ödeme Periyodu Ekle</a>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,43 @@
+﻿@model List<ResultServiceDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="col-xl-12">
+    <h4 class="card-title">Hizmet Listesi</h4>
+    <p class="card-subtitle mb-4">
+        Anasayfada bulunan hizmetler ile ilgili ekleme, güncelleme, silme ve listeleme işlemlerini bu sayfa üzerinden gerçekleştirebilirsiniz.
+    </p><p>Site tasarımının bozulamaması için yanlızca "4" adet hizmet ekleyiniz.</p>
+    <div class="table-responsive table-hover">
+        <table class="table mb-0">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Başlık</th>
+                    <th>Açıklama</th>
+                    <th>Icon Url</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ServiceId</td>
+                        <td>@item.Title</td>
+                        <td>@item.Description</td>
+                        <td>@item.IconUrl</td>
+                        <td> <a href="/Admin/Service/RemoveService/@item.ServiceId" class="btn btn-outline-danger">Sil</a></td>
+                        <td> <a href="/Admin/Service/UpdateService/@item.ServiceId" class="btn btn-outline-success">Güncelle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class=" mt-4">
+            <a href="/Admin/Service/CreateService/" class="btn btn-outline-primary ">+ Yeni Hizmet Ekle</a>
+        </div>
+    </div>
+
+</div>

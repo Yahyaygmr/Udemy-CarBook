@@ -1,0 +1,45 @@
+﻿@model List<ResultSocialMediaDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="col-xl-12">
+    <h4 class="card-title">Sosyal Medya Hesapları Listesi</h4>
+    <p class="card-subtitle mb-4">
+        Sosyal medya hesapları ile ilgili ekleme, güncelleme, silme ve listeleme işlemlerini bu sayfa üzerinden gerçekleştirebilirsiniz.
+    </p>
+    <div class="table-responsive table-hover">
+        <table class="table mb-0">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Sosyal Medya</th>
+                    <th>Url</th>
+                    <th>Icon</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.SocialMediaId</td>
+                        <td>@item.Name</td>
+                        <td>@item.Url</td>
+                        <td>@item.Icon</td>
+                        <td> <a href="/Admin/SocialMedia/RemoveSocialMedia/@item.SocialMediaId" class="btn btn-outline-danger">Sil</a></td>
+                        <td> <a href="/Admin/SocialMedia/UpdateSocialMedia/@item.SocialMediaId" class="btn btn-outline-success">Güncelle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class=" mt-4">
+            <a href="/Admin/SocialMedia/CreateSocialMedia/" class="btn btn-outline-primary ">+ Yeni Sosyal Medya Hesabı Ekle</a>
+        </div>
+    </div>
+
+</div>
+
+

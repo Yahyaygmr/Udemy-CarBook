@@ -20,6 +20,11 @@ namespace CarBook.Persistence.Repositories.CarRepositories
             _context = context;
         }
 
+        public int GetCarCount()
+        {
+            return _context.Cars.Count();
+        }
+
         public List<Car> GetCarsListWithBrands()
         {
             return _context.Cars.Include(x => x.Brand).ToList();
@@ -27,11 +32,11 @@ namespace CarBook.Persistence.Repositories.CarRepositories
 
         public List<Car> GetLast5CarsListWithBrands()
         {
-           return _context.Cars
-                .OrderByDescending(x => x.CarId)
-                .Take(5)
-                .Include(x => x.Brand)
-                .ToList();
+            return _context.Cars
+                 .OrderByDescending(x => x.CarId)
+                 .Take(5)
+                 .Include(x => x.Brand)
+                 .ToList();
         }
     }
 }

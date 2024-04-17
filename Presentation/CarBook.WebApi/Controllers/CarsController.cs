@@ -2,6 +2,8 @@
 using CarBook.Application.Features.CQRS.Handlers.CarHandlers.Read;
 using CarBook.Application.Features.CQRS.Handlers.CarHandlers.Write;
 using CarBook.Application.Features.CQRS.Queries.CarQueries;
+using CarBook.Application.Features.Mediator.Queries.StatisticsQueries;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,8 +20,9 @@ namespace CarBook.WebApi.Controllers
         private readonly UpdateCarCommandHandler _updateCarCommandHandler;
         private readonly RemoveCarCommandHandler _removeCarCommandHandler;
         private readonly GetLast5CarsListWithBrandQueryHandler _getLast5CarsListWithBrandQueryHandler;
+        private readonly IMediator _mediator;
 
-        public CarsController(GetCarQueryHandler getCarQueryHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, CreateCarCommandHandler createCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler, RemoveCarCommandHandler removeCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLast5CarsListWithBrandQueryHandler getLast5CarsListWithBrandQueryHandler)
+        public CarsController(GetCarQueryHandler getCarQueryHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, CreateCarCommandHandler createCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler, RemoveCarCommandHandler removeCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLast5CarsListWithBrandQueryHandler getLast5CarsListWithBrandQueryHandler, IMediator mediator)
         {
             _getCarQueryHandler = getCarQueryHandler;
             _getCarByIdQueryHandler = getCarByIdQueryHandler;
@@ -28,6 +31,7 @@ namespace CarBook.WebApi.Controllers
             _removeCarCommandHandler = removeCarCommandHandler;
             _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
             _getLast5CarsListWithBrandQueryHandler = getLast5CarsListWithBrandQueryHandler;
+            _mediator = mediator;
         }
 
         [HttpGet]
@@ -71,6 +75,12 @@ namespace CarBook.WebApi.Controllers
         {
             var values = _getLast5CarsListWithBrandQueryHandler.Handle();
             return Ok(values);
+        }
+        [HttpGet("GetCarCount")]
+        public IActionResult GetCarCount()
+        {
+            var value = _mediator.Send(new GetCarCountQuery());
+            return Ok(value);
         }
     }
 }

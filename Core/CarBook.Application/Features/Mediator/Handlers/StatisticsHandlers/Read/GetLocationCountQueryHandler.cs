@@ -1,5 +1,6 @@
 ﻿using CarBook.Application.Features.Mediator.Queries.StatisticsQueries;
 using CarBook.Application.Features.Mediator.Results.StatisticsResults;
+using CarBook.Application.Interfaces.StatisticsInterfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,21 @@ namespace CarBook.Application.Features.Mediator.Handlers.StatisticsHandlers.Read
 {
     public class GetLocationCountQueryHandler : IRequestHandler<GetLocationCountQuery, GetLocationCountQueryResult>
     {
-        public Task<GetLocationCountQueryResult> Handle(GetLocationCountQuery request, CancellationToken cancellationToken)
+        private readonly IStatisticsRepository _repository;
+
+        public GetLocationCountQueryHandler(IStatisticsRepository repository)
         {
-            throw new NotImplementedException();
+            _repository = repository;
+        }
+
+        public async Task<GetLocationCountQueryResult> Handle(GetLocationCountQuery request, CancellationToken cancellationToken)
+        {
+            var value = _repository.GetLocationCount();
+
+            return new GetLocationCountQueryResult
+            {
+                LocationCount = value,
+            };
         }
     }
 }

@@ -29,6 +29,11 @@ namespace CarBook.Persistence.Repositories.StatisticsRepositories
             throw new NotImplementedException();
         }
 
+        public int GetAuthorCount()
+        {
+            return _context.Authors.Count();
+        }
+
         public decimal GetAvgRentPriceForDaily()
         {
             int pricingId = _context.Pricings.Where(p => p.Name == "Günlük").Select(g => g.PricingId).FirstOrDefault();

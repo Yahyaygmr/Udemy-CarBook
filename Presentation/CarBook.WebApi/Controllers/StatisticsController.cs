@@ -40,6 +40,12 @@ namespace CarBook.WebApi.Controllers
             var value = _mediator.Send(new GetBrandCountQuery());
             return Ok(value);
         }
+        [HttpGet("GetBlogCount")]
+        public IActionResult GetBlogCount()
+        {
+            var value = _mediator.Send(new GetBlogCountQuery());
+            return Ok(value);
+        }
         [HttpGet("GetAvgRentPriceForDaily")]
         public IActionResult GetAvgRentPriceForDaily()
         {

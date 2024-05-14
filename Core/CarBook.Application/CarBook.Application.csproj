@@ -20,7 +20,9 @@
     <Folder Include="Features\Mediator\Commands\StatisticsCommands\" />
     <Folder Include="Features\Mediator\Handlers\CarPricingHandlers\Write\" />
     <Folder Include="Features\Mediator\Handlers\RentACarHandlers\Write\" />
+    <Folder Include="Features\Mediator\Handlers\ReservationHandlers\Read\" />
     <Folder Include="Features\Mediator\Handlers\StatisticsHandlers\Write\" />
+    <Folder Include="Features\Mediator\Results\ReservationResults\" />
   </ItemGroup>
 
 </Project>

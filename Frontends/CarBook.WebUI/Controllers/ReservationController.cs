@@ -1,40 +1,47 @@
 ﻿using CarBook.Dto.LocationDtos;
+using CarBook.Dto.ReservationDtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
-using System.Drawing.Text;
+using System.Net.Http;
+using System.Text;
 
 namespace CarBook.WebUI.Controllers
 {
-    public class DefaultController : Controller
+    public class ReservationController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        public DefaultController(IHttpClientFactory httpClientFactory)
+
+        public ReservationController(IHttpClientFactory httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;  
+            _httpClientFactory = httpClientFactory;
         }
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            ViewBag.locations =await LocationsSelectListAsync();
+            ViewBag.locations = await LocationsSelectListAsync();
+            ViewBag.id = id;
             return View();
         }
         [HttpPost]
-        public IActionResult Index(string book_pick_date,string book_off_date,string time_pick, string time_off, string locationId)
+        public async Task<IActionResult> Index(CreateReservationDto dto)
         {
-            TempData["book_pick_date"] = book_pick_date;
-            TempData["book_off_date"] = book_off_date;
-            TempData["time_pick"] = time_pick;
-            TempData["time_off"] = time_off;
-            TempData["locationId"] = locationId;
-
-            return RedirectToAction("Index","RentACar");
+            var client = _httpClientFactory.CreateClient();
+             var jsonData = JsonConvert.SerializeObject(dto);
+            StringContent content = new StringContent(jsonData,Encoding.UTF8,"application/json");
+            var responseMessage = await client.PostAsync("https://localhost:44386/api/Reservations", content);
+            if(responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Default");
+            }
+            return View();
         }
+
         public async Task<List<ResultLocationDto>> GetLocationsAsync()
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44386/api/Locations");
-            if(responseMessage.IsSuccessStatusCode)
+            if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultLocationDto>>(jsonData);
@@ -44,7 +51,7 @@ namespace CarBook.WebUI.Controllers
         }
         public async Task<List<SelectListItem>> LocationsSelectListAsync()
         {
-            var list =await GetLocationsAsync();
+            var list = await GetLocationsAsync();
             List<SelectListItem> value = (from x in list
                                           select new SelectListItem
                                           {

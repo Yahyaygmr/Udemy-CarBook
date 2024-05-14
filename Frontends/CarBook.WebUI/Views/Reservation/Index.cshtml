@@ -1,0 +1,68 @@
+﻿@model CreateReservationDto
+@{
+    ViewData["Title"] = "Araç Rezervasyon Formu";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+<section class="ftco-section contact-section">
+    <div class="container">
+        <h3 class="alert alert-success">Araç Rezervasyon Formu</h3>
+        <div class="row d-flex mb-5 contact-info">
+           
+            <div class="col-md-12 block-9 mb-md-5">
+                <form class="bg-light pt-5 px-5 pb-2 contact-form" method="post">
+                    <div class="form-group">
+                        <input type="hidden" value="@ViewBag.id" class="form-control" placeholder="Almak İstediğiniz Araç" asp-for="CarId">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Adınız" asp-for="Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Soyadınız" asp-for="Surname">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Mail Adresiniz" asp-for="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Telefon Numaranız" asp-for="Phone">
+                    </div>
+                    <div class="form-group">
+                        <select asp-for="PickUpLocationId" class="form-control">
+                            <option value="" style="color:black;">Almak İstediğiniz Lokasyon</option>
+                            @foreach (var item in ViewBag.locations)
+                            {
+                                <option value="@item.Value" style="color:black;">@item.Text</option>
+                            }
+                        </select>
+                      @*   <input type="text" class="form-control" placeholder="Almak İstediğiniz Lokasyon"> *@
+                    </div>
+                    <div class="form-group">
+                        <select asp-for="DropOffLocationId" class="form-control">
+                            <option value="" style="color:black;">Teslim Etmek İstediğiniz Lokasyon</option>
+                            @foreach (var item in ViewBag.locations)
+                            {
+                                <option value="@item.Value" style="color:black;">@item.Text</option>
+                            }
+                        </select>
+                       @*  <input type="text" class="form-control" placeholder="Teslim etmek İstediğiniz Lokasyon"> *@
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Yaşınız" asp-for="Age">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Ehliyet Yılınız" asp-for="DiriverLicenseYear">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="" cols="30" rows="3" class="form-control" placeholder="Varsa Eklemek İstedikleriniz" asp-for="Description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Rezervasyon Oluştur" class="btn btn-primary py-3 px-5">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        
+    </div>
+</section>
+

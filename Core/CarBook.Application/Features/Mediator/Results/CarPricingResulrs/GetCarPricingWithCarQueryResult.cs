@@ -9,6 +9,7 @@ namespace CarBook.Application.Features.Mediator.Results.CarPricingResulrs
 {
     public class GetCarPricingWithCarQueryResult
     {
+        public int CarId { get; set; }
         public int CarPricingId { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }

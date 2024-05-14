@@ -31,6 +31,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.CarPricingHandlers.Read
                 CoverImageUrl = x.Car.CoverImageUrl,
                 Model = x.Car.Model,
                 PricingName = x.Pricing.Name,
+                CarId =x.CarId
             }).ToList();
         }
     }

@@ -86,6 +86,11 @@ namespace CarBook.WebUI.Controllers
             }
             return View();
         }
+        [HttpGet]
+        public IActionResult CarDetail(int id)
+        {
+            return View();
+        }
         public async Task<List<ResultBrandDto>> GetBrandsAsync()
         {
             var client = _httpClientFactory.CreateClient();

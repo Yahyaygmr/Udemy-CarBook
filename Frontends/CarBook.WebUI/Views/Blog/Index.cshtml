@@ -9,18 +9,18 @@
         <div class="row d-flex justify-content-center">
             @foreach(var item in Model)
             {
-                <div class="col-md-12 text-center d-flex ftco-animate">
+                <div class="col-md-4 text-center d-flex ftco-animate">
                     <div class="blog-entry justify-content-end mb-md-5">
-                        <a href="blog-single.html" class="block-20 img" style="background-image: url('@item.coverImageUrl');">
+                        <a href="/Blog/BlogDetail/@item.blogId" class="block-20 img img-fluid" style="background-image: url('@item.coverImageUrl'); height:355px;">
                         </a>
                         <div class="text px-md-5 pt-4">
                             <div class="meta mb-3">
-                                <div><a href="#">@item.createdDate.ToString("dd MMM yyyy")</a></div>
-                                <div><a href="#">@item.authorName</a></div>
-                                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                                <div><a href="/Blog/BlogDetail/@item.blogId">@item.createdDate.ToString("dd MMM yyyy")</a></div>
+                                <div><a href="/Blog/BlogDetail/@item.blogId">@item.authorName</a></div>
+                               @*  <div><a href="/Blog/BlogDetail/@item.blogId" class="meta-chat"><span class="icon-chat"></span> 3</a></div> *@
                             </div>
-                            <h3 class="heading mt-2"><a href="#">@item.name</a></h3>
-                            <p>@item.description.</p>
+                            <h3 class="heading mt-2"><a href="/Blog/BlogDetail/@item.blogId">@item.name</a></h3>
+                            <p>@item.description.Substring(0,55) ...</p>
                             <p><a href="/Blog/BlogDetail/@item.blogId" class="btn btn-primary">Devamını Oku <span class="icon-long-arrow-right"></span></a></p>
                         </div>
                     </div>

@@ -1,12 +1,43 @@
 ﻿@model List<GetCommentByBlogIdDto>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const canvases = document.querySelectorAll('.profile-initial');
+
+        canvases.forEach(canvas => {
+            const name = canvas.getAttribute('data-name');
+            const initials = name ? name.charAt(0).toUpperCase() : '';
+            drawInitials(canvas, initials);
+        });
+
+        function drawInitials(canvas, initials) {
+            const context = canvas.getContext('2d');
+            const size = 50;
+            canvas.width = size;
+            canvas.height = size;
+
+            // Background color
+            context.fillStyle = '#007bff'; // Blue background, change as needed
+            context.fillRect(0, 0, size, size);
+
+            // Text settings
+            context.fillStyle = '#ffffff'; // White text, change as needed
+            context.font = 'bold 25px Arial';
+            context.textAlign = 'center';
+            context.textBaseline = 'middle';
+
+            // Draw text
+            context.fillText(initials, size / 2, size / 2);
+        }
+    });
+</script>
 <h3 class="mb-5">@Model.Count Yorum</h3>
 <ul class="comment-list">
     @foreach (var item in Model)
     {
         <li class="comment">
             <div class="vcard bio">
-                <img src="/carbook-master/images/person_1.jpg" alt="Image placeholder">
+                <canvas class="profile-initial" data-name="@item.Name"></canvas>
             </div>
             <div class="comment-body">
                 <h3>@item.Name</h3>

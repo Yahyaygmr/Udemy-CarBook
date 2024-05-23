@@ -30,6 +30,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.CarFeatureHandlers.Read
                 Available = x.Available,
                 CarFeatureId = x.CarFeatureId,
                 FeatureId = x.FeatureId,
+                FeatureName = x.Feature.Name,
             }).ToList();
         }
     }

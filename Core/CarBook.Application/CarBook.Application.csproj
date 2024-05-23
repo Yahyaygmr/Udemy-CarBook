@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Mediator\Commands\StatisticsCommands\" />
-    <Folder Include="Features\Mediator\Handlers\CarFeatureHandlers\Write\" />
     <Folder Include="Features\Mediator\Handlers\CarPricingHandlers\Write\" />
     <Folder Include="Features\Mediator\Handlers\RentACarHandlers\Write\" />
     <Folder Include="Features\Mediator\Handlers\ReservationHandlers\Read\" />

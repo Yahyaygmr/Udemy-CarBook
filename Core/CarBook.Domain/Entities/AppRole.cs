@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace CarBook.Domain.Entities
 {
-    public class AppUser
+    public class AppRole
     {
-        public int AppUserId { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
         public int AppRoleId { get; set; }
-        public AppRole AppRole { get; set; }
+        public string RoleName { get; set; }
+        public List<AppUser> AppUsers { get; set; }
     }
 }

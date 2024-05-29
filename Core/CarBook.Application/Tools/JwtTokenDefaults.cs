@@ -10,7 +10,7 @@ namespace CarBook.Application.Tools
     {
         public const string ValidAudience = "https://localhost";
         public const string ValidIssuer = "https://localhost";
-        public const string Key = "carbooksymmetrickey";
+        public const string Key = "carBookProjectsymmetrickey0102key";
         public const int Expire = 3;
 
     }

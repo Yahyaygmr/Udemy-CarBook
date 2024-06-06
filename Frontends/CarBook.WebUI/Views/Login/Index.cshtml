@@ -3,12 +3,13 @@
     Layout = null;
 }
 
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <title>CarBook Register</title>
+    <title>CarBook Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="MyraStudio" name="author" />
@@ -39,39 +40,25 @@
                                         <div class="text-center mb-5">
                                             <a href="index.html" class="text-dark font-size-22 font-family-secondary">
                                                 <i class="mdi mdi-alpha-x-circle"></i> <b>
-                                                    Car Book Kayıt
+                                                    Car Book Giriş
                                                 </b>
                                             </a>
                                         </div>
-                                        <h1 class="h5 mb-1">Hesap Oluştur</h1>
-                                       
+                                        <h1 class="h5 mb-1">Giriş Yap</h1>
+
                                         <form class="user mt-3" method="post">
+
                                             <div class="form-group row">
-                                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Adınız" asp-for="Name">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Soyadınız" asp-for="Surname"> 
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                                    <input type="email" class="form-control form-control-user" id="exampleFirstName" placeholder="Mail Adresiniz" asp-for="Email">
-                                                </div>
+
                                                 <div class="col-sm-6">
                                                     <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Kullanıcı Adınız" asp-for="UserName">
                                                 </div>
-                                            </div>
-                                            
-                                            <div class="form-group row">
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                                     <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Şifreniz" asp-for="Password">
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Şifreniz Tekrar " asp-for="ConfirmPassword">
-                                                </div>
+                                              
                                             </div>
-                                            <button class="btn btn-success btn-block waves-effect waves-light">Hesap Oluştur</button>
+                                            <button class="btn btn-success btn-block waves-effect waves-light">Giriş Yap</button>
                                             <div class="text-center mt-4">
                                                 <h5 class="text-muted font-size-16">İle Giriş Yap</h5>
 
@@ -95,7 +82,7 @@
 
                                         <div class="row mt-4">
                                             <div class="col-12 text-center">
-                                                <p class="text-muted mb-0">Hesabın var mı?  <a href="/Login/Index/" class="text-muted font-weight-medium ml-1"><b>Giriş Yap</b></a></p>
+                                                <p class="text-muted mb-0">Hesabın Yok mu?  <a href="/Register/Index/" class="text-muted font-weight-medium ml-1"><b>Kayıt Ol</b></a></p>
                                             </div> <!-- end col -->
                                         </div>
                                         <!-- end row -->
